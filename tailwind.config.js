@@ -5,6 +5,14 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors: {
+      'midnight' : '#121063',
+      'tahiti' : 'white',
+      'basic' : 'yellow',
+      'delBtn' : 'red',
+      'like' : '#243c5a',
+      'likeHover' : '#50d71e'
+    }
   },
   plugins: [],
 }

@@ -27,8 +27,8 @@ function App() {
 
   return (
     <div className="App">
-      <div className='black-nav'>
-        <h4 className='text-3xl font-bold underline tracking-widest text bg-center'>REACT BLOG</h4> 
+      <div className='h-24 bg-midnight' >
+        <h4 className=' p-7 text-3xl font-bold underline tracking-widest  text-center  text-tahiti '>REACT BLOG</h4> 
       </div>
   
    { /*  <button onClick={ () => {   // jsx 주석처리할 때 {}대괄호 붙이고 /* 이거 해줌 
@@ -64,9 +64,9 @@ function App() {
         //html중간에 for 반복문을 쓰려면 
         title.map(function(a, i){
           return (
-          <div className=" columns-3 " key={i}>
-              <h4 onClick={ () => { setModal(!modal); setTitle1(i)}} >{ a }
-                <span className=' bg-sky-100 hover:bg-sky-200' onClick={ (e) => { 
+          <div className=" text-center columns-3 px-8 p-5" key={i}>
+              <div><h4 onClick={ () => { setModal(!modal); setTitle1(i)}} >{ a }
+                <span className=' bg-like hover:bg-likeHover cursor-pointer' onClick={ (e) => { 
                     e.stopPropagation(); // 상위html로 퍼지는 이벤트버블링을 막아줌
                     //array는 자료 변경 시 복사부터 하기!!!
                     let copy = [...like];
@@ -75,28 +75,30 @@ function App() {
                   } }>👍 {like[i]} </span>
               </h4>
               <p>2023년 3월 26일 발행</p>
-              <button onClick={ () => {
+              <button className=' bg-delBtn text-tahiti px-2' onClick={ () => {
                 let copy = [...title];
                 copy.splice(i, 1); // splice(삭제할 인덱스값, 1)
                 setTitle(copy);
               }}>삭제</button>
+              </div>
           </div>
           )
         })
       }
-
-      <input onChange={ (e) => { 
-        setInput(e.target.value);   //  <- 이거 완료되기 전에 (state변경함수는 늦게처리됨)
-        console.log('입력값 : ' + input) // <- 다음 줄 실행해 줌
-         }} />
+      <br/>
+      <div className='border-solid border-2 border-basic text-center  px-8 p-5'>
+        <input className='border-solid border-2' placeholder='input value' onChange={ (e) => { 
+          setInput(e.target.value);   //  <- 이거 완료되기 전에 (state변경함수는 늦게처리됨)
+          console.log('입력값 : ' + input) // <- 다음 줄 실행해 줌
+          }} />
         
-      <button onClick= {() => {
-        let copy = [...title];
-      //  copy.push(input);    
-        copy.unshift(input); // array 맨 처음에 추가해줌
-        setTitle(copy);
-      } } > 글추가 </button>
-      
+        <button className=' bg-midnight text-tahiti px-5 rounded-md' onClick= {() => {
+          let copy = [...title];
+        //  copy.push(input);    
+          copy.unshift(input); // array 맨 처음에 추가해줌
+          setTitle(copy);
+        } } > 글추가 </button>
+      </div>
 
 
       {
@@ -131,7 +133,7 @@ const Modal = () => {
 function Modal(props){ //컴포넌트로 만들기_의미없는 div는 <> 이렇게 축약 
   return (
     <>        
-      <div className='modal' style={{background : props.color}}>
+      <div className='text-center' style={{background : props.color}}>
         <h4>{props.글제목[props.해당글제목]}</h4>
         <p>날짜</p>
         <p>상세내용</p>
